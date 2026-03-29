@@ -1,645 +1,73 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>فليكس | قناة غيمنغ على يوتيوب</title>
-    <meta
-      name="description"
-      content="موقع ترويجي لقناة فليكس على يوتيوب: تحديات، ألعاب، بثوث، وأقوى اللحظات لعشاق الغيمنغ."
-    />
-    <style>
-      :root {
-        --bg: #07111f;
-        --bg-soft: #0f1d31;
-        --panel: rgba(9, 18, 31, 0.78);
-        --panel-strong: rgba(14, 28, 48, 0.96);
-        --line: rgba(255, 255, 255, 0.08);
-        --text: #eff6ff;
-        --muted: #a9bad0;
-        --accent: #ff5a36;
-        --accent-2: #00d1b2;
-        --accent-3: #ffd166;
-        --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Tahoma, Arial, sans-serif;
-        background:
-          radial-gradient(circle at top left, rgba(255, 90, 54, 0.25), transparent 32%),
-          radial-gradient(circle at top right, rgba(0, 209, 178, 0.18), transparent 28%),
-          linear-gradient(160deg, #040914 0%, #091321 52%, #060b14 100%);
-        color: var(--text);
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 34px 34px;
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
-        pointer-events: none;
-      }
-
-      .page-shell {
-        width: min(1160px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 24px 0 56px;
-      }
-
-      .hero {
-        padding: 14px 0 20px;
-      }
-
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 18px;
-        background: rgba(8, 15, 27, 0.72);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        backdrop-filter: blur(14px);
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 1.1rem;
-        font-weight: 800;
-      }
-
-      .brand-badge {
-        display: grid;
-        place-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        color: #fff;
-        background: linear-gradient(135deg, var(--accent), #ff8548);
-        box-shadow: 0 14px 30px rgba(255, 90, 54, 0.35);
-      }
-
-      .brand-logo {
-        width: 42px;
-        height: 42px;
-        object-fit: cover;
-        border-radius: 12px;
-      }
-
-      .nav-link,
-      .button {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .nav-link {
-        color: var(--muted);
-        transition: color 180ms ease;
-      }
-
-      .nav-link:hover {
-        color: var(--text);
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 24px;
-        margin-top: 28px;
-        align-items: stretch;
-      }
-
-      .hero-copy,
-      .hero-card,
-      .info-card,
-      .schedule-card,
-      .cta-panel {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(16px);
-      }
-
-      .hero-copy {
-        padding: 42px;
-      }
-
-      .eyebrow {
-        margin: 0 0 14px;
-        color: var(--accent-3);
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        margin-bottom: 18px;
-        font-size: clamp(2.6rem, 6vw, 5.2rem);
-        line-height: 0.95;
-      }
-
-      .hero-text {
-        max-width: 54ch;
-        color: var(--muted);
-        font-size: 1.08rem;
-        line-height: 1.8;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin: 28px 0 34px;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 148px;
-        padding: 14px 22px;
-        border-radius: 16px;
-        font-weight: 800;
-        transition:
-          transform 180ms ease,
-          background 180ms ease,
-          border-color 180ms ease;
-      }
-
-      .button:hover {
-        transform: translateY(-2px);
-      }
-
-      .button-primary {
-        background: linear-gradient(135deg, var(--accent), #ff7d45);
-        color: #fff;
-      }
-
-      .button-secondary {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .stats-list,
-      .feature-stack,
-      .clean-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .stats-list {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .stats-list li {
-        padding: 16px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .stats-list strong {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 1.15rem;
-      }
-
-      .stats-list span {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .hero-card {
-        position: relative;
-        overflow: hidden;
-        padding: 28px;
-      }
-
-      .hero-logo {
-        display: block;
-        width: 94px;
-        height: 94px;
-        margin-bottom: 14px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-      }
-
-      .hero-card::after {
-        content: "";
-        position: absolute;
-        width: 220px;
-        height: 220px;
-        left: -60px;
-        bottom: -70px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(0, 209, 178, 0.3), transparent 70%);
-      }
-
-      .card-label {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .playlist-box {
-        margin: 16px 0 24px;
-        padding: 20px;
-        border-radius: 22px;
-        background: linear-gradient(145deg, rgba(255, 90, 54, 0.14), rgba(255, 209, 102, 0.08));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .playlist-box span {
-        color: var(--accent-2);
-        font-weight: 700;
-      }
-
-      .playlist-box h2 {
-        margin: 8px 0 0;
-        font-size: 2rem;
-      }
-
-      .feature-stack {
-        display: grid;
-        gap: 16px;
-      }
-
-      .feature-stack li {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 14px;
-        align-items: start;
-        padding: 16px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
-        color: #08111e;
-        background: linear-gradient(135deg, var(--accent-3), #fff0a3);
-        font-weight: 800;
-      }
-
-      .feature-stack p,
-      .info-card li,
-      .schedule-card p,
-      .cta-panel p {
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .section {
-        margin-top: 30px;
-      }
-
-      .section-heading {
-        margin-bottom: 18px;
-        padding-inline: 4px;
-      }
-
-      .section-heading h2 {
-        font-size: clamp(1.8rem, 4vw, 3rem);
-      }
-
-      .cards-grid,
-      .schedule-grid {
-        display: grid;
-        gap: 18px;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .info-card {
-        padding: 24px;
-      }
-
-      .clean-list li {
-        position: relative;
-        padding: 12px 0;
-        padding-right: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .clean-list li:last-child {
-        border-bottom: 0;
-      }
-
-      .clean-list li::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 20px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), var(--accent-3));
-      }
-
-      .alt-section {
-        padding: 28px;
-        border-radius: 30px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-        border: 1px solid var(--line);
-      }
-
-      .schedule-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .schedule-card {
-        padding: 24px;
-        background: var(--panel-strong);
-      }
-
-      .day {
-        display: inline-block;
-        margin-bottom: 14px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(0, 209, 178, 0.12);
-        color: var(--accent-2);
-        font-weight: 700;
-      }
-
-      .cta-panel {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 22px;
-        padding: 30px;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 500ms ease,
-          transform 500ms ease;
-      }
-
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (max-width: 920px) {
-        .hero-grid,
-        .cards-grid,
-        .schedule-grid,
-        .cta-panel {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-panel {
-          display: grid;
-        }
-
-        .hero-copy,
-        .hero-card,
-        .alt-section {
-          padding: 22px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .page-shell {
-          width: min(100% - 20px, 100%);
-          padding-top: 14px;
-        }
-
-        .topbar {
-          padding: 12px 14px;
-        }
-
-        .brand {
-          gap: 8px;
-          font-size: 1rem;
-        }
-
-        .nav-link {
-          font-size: 0.92rem;
-        }
-
-        .hero-copy {
-          padding: 20px;
-        }
-
-        .stats-list {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-actions,
-        .button {
-          width: 100%;
-        }
-
-        .button {
-          min-width: auto;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="hero">
-        <nav class="topbar">
-          <div class="brand">
-            <img class="brand-logo" src="flyx-logo.png" alt="شعار قناة فليكس" />
-            <span>فليكس</span>
-          </div>
-          <a class="nav-link" href="#content">استكشف المحتوى</a>
-        </nav>
-
-        <section class="hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">قناة غيمنغ عربية بطابع حماسي</p>
-            <h1>فليكس<br />اللعب يبدأ هنا</h1>
-            <p class="hero-text">
-              قناة يوتيوب تقدم محتوى ألعاب سريع، ممتع، ومليء باللقطات النارية:
-              تحديات، سلاسل قصصية، مقاطع مضحكة، وبثوث مباشرة لعشاق المنافسة.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="https://www.youtube.com/@Flyx-o1l" target="_blank" rel="noreferrer">اشترك الآن</a>
-              <a class="button button-secondary" href="#schedule">جدول النشر</a>
-            </div>
-            <ul class="stats-list">
-              <li><strong>+3</strong><span>حلقات أسبوعيًا</span></li>
-              <li><strong>Live</strong><span>بثوث مباشرة</span></li>
-              <li><strong>Top Clips</strong><span>أفضل اللقطات</span></li>
-            </ul>
-          </div>
-
-          <div class="hero-card">
-            <img class="hero-logo" src="flyx-logo.png" alt="شعار فليكس" />
-            <p class="card-label">محتوى القناة</p>
-            <div class="playlist-box">
-              <span>Playlists</span>
-              <h2>قوائم مختارة للجمهور</h2>
-            </div>
-            <ul class="feature-stack">
-              <li>
-                <span class="tag">01</span>
-                <div>
-                  <h3>تحديات تنافسية</h3>
-                  <p>مواجهات صعبة وردود فعل قوية ضد أصعب الخصوم.</p>
-                </div>
-              </li>
-              <li>
-                <span class="tag">02</span>
-                <div>
-                  <h3>قصص وأطوار فردية</h3>
-                  <p>استكشاف أفضل ألعاب القصة مع تعليق ممتع ومباشر.</p>
-                </div>
-              </li>
-              <li>
-                <span class="tag">03</span>
-                <div>
-                  <h3>مقاطع مضحكة وسريعة</h3>
-                  <p>أقوى اللحظات واللقطات التي تستحق الإعادة.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </header>
-
-      <main>
-        <section class="section" id="content">
-          <div class="section-heading">
-            <p class="eyebrow">ماذا ستجد في فليكس؟</p>
-            <h2>قوائم ترفع الحماس</h2>
-          </div>
-
-          <div class="cards-grid">
-            <article class="info-card">
-              <h3>أفضل السلاسل</h3>
-              <ul class="clean-list">
-                <li>طور القصة الكامل</li>
-                <li>تحديات بدون خسارة</li>
-                <li>مغامرات ألعاب الرعب</li>
-                <li>ألعاب الباتل رويال</li>
-              </ul>
-            </article>
-
-            <article class="info-card">
-              <h3>ألعاب مقترحة</h3>
-              <ul class="clean-list">
-                <li>FC 24</li>
-                <li>Spider-Man</li>
-                <li>GTA</li>
-                <li>Call of Duty</li>
-              </ul>
-            </article>
-
-            <article class="info-card">
-              <h3>لماذا تتابع القناة؟</h3>
-              <ul class="clean-list">
-                <li>مونتاج سريع وحيوي</li>
-                <li>أسلوب عربي قريب للجمهور</li>
-                <li>تنوع بين الضحك والتحدي</li>
-                <li>تفاعل مستمر مع المتابعين</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="section alt-section" id="schedule">
-          <div class="section-heading">
-            <p class="eyebrow">الالتزام يصنع الجمهور</p>
-            <h2>جدول نشر منظم</h2>
-          </div>
-
-          <div class="schedule-grid">
-            <article class="schedule-card">
-              <span class="day">الإثنين</span>
-              <h3>حلقة رئيسية</h3>
-              <p>محتوى طويل أو بداية سلسلة جديدة.</p>
-            </article>
-            <article class="schedule-card">
-              <span class="day">الأربعاء</span>
-              <h3>لقطات سريعة</h3>
-              <p>أفضل اللحظات والردود الكوميدية.</p>
-            </article>
-            <article class="schedule-card">
-              <span class="day">الجمعة</span>
-              <h3>بث مباشر</h3>
-              <p>مباريات وتفاعل مباشر مع الجمهور.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="cta-panel">
-            <div>
-              <p class="eyebrow">جاهز تدخل الأجواء؟</p>
-              <h2>انضم إلى مجتمع فليكس الآن</h2>
-              <p>
-                إذا كنت تحب الحماس، التحديات، واللقطات المجنونة، فقناة فليكس
-                تنتظرك.
-              </p>
-            </div>
-            <a class="button button-primary" href="https://www.youtube.com/@Flyx-o1l" target="_blank" rel="noreferrer">زيارة القناة</a>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <script>
-      const revealItems = document.querySelectorAll(
-        ".hero-copy, .hero-card, .info-card, .schedule-card, .cta-panel"
-      );
-
-      revealItems.forEach((item) => item.classList.add("reveal"));
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-        }
-      );
-
-      revealItems.forEach((item) => observer.observe(item));
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رحلة نُجْم في المغرب</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="hud-card">
+      <div class="title-wrap">
+        <p class="eyebrow">لعبة منصات 2D بطابع مغربي</p>
+        <h1>رحلة نُجْم في المغرب</h1>
+        <p id="storyText" class="story">
+          ساعد نُجْم يستكشف قلعة الملك ويجمع الكنوز من أروقتها وقاعاتها وسراديبها حتى يصل إلى منصة التتويج.
+        </p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span>المرحلة</span>
+          <strong id="levelName">-</strong>
+        </div>
+        <div class="stat">
+          <span>المقتنيات</span>
+          <strong id="collectStatus">0 / 0</strong>
+        </div>
+        <div class="stat">
+          <span>النقاط</span>
+          <strong id="scoreValue">0</strong>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="startButton" class="primary-btn">ابدأ المغامرة</button>
+        <button id="restartButton" class="ghost-btn">أعد المرحلة</button>
+        <button id="skipButton" class="ghost-btn">تخطي المرحلة</button>
+        <button id="audioButton" class="ghost-btn">الصوت: شغال</button>
+      </div>
+
+      <div class="controls-note">
+        <span>التحكم:</span>
+        الأسهم أو <b>W A S D</b> للحركة، و <b>Space</b> أو <b>W</b> للقفز، و <b>S</b> أو السهم السفلي للانحناء.
+      </div>
+    </section>
+
+    <section class="canvas-card">
+      <div class="canvas-topbar">
+        <div id="bannerTitle">جاهز للانطلاق</div>
+        <div id="bannerSubtitle">خمس مراحل داخل قلعة ملكية مليئة بالمصائد والأسرار.</div>
+      </div>
+      <canvas id="gameCanvas" width="960" height="540" aria-label="لعبة رحلة نجم في المغرب"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="overlay-box">
+          <h2 id="overlayTitle">رحلة نُجْم في المغرب</h2>
+          <p id="overlayBody">اجمع كل المقتنيات في كل مرحلة ثم ادخل الباب الذهبي للانتقال للمرحلة التالية.</p>
+        </div>
+      </div>
+
+      <div class="touch-controls">
+        <button class="touch-btn" data-key="left">يسار</button>
+        <button class="touch-btn" data-key="down">نزول</button>
+        <button class="touch-btn" data-key="jump">قفز</button>
+        <button class="touch-btn" data-key="right">يمين</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
 </html>
