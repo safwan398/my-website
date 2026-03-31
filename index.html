@@ -1,73 +1,1081 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رحلة نُجْم في المغرب</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="game-shell">
-    <section class="hud-card">
-      <div class="title-wrap">
-        <p class="eyebrow">لعبة منصات 2D بطابع مغربي</p>
-        <h1>رحلة نُجْم في المغرب</h1>
-        <p id="storyText" class="story">
-          ساعد نُجْم يستكشف قلعة الملك ويجمع الكنوز من أروقتها وقاعاتها وسراديبها حتى يصل إلى منصة التتويج.
-        </p>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stray Kids | عالم صاخب لا يُنسى</title>
+    <meta
+      name="description"
+      content="صفحة ترويجية جذابة لفرقة Stray Kids بتصميم جريء، أجواء مسرحية، وأقسام تبرز الطاقة، الأغاني، والهوية الخاصة بالفرقة."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --bg-soft: #121212;
+        --panel: rgba(255, 255, 255, 0.05);
+        --panel-strong: rgba(255, 255, 255, 0.09);
+        --line: rgba(255, 255, 255, 0.11);
+        --text: #f8f1e7;
+        --muted: #c8beb2;
+        --red: #ff5031;
+        --red-deep: #d72810;
+        --sand: #f0c992;
+        --shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+        --radius-xl: 34px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+      }
 
-      <div class="stats">
-        <div class="stat">
-          <span>المرحلة</span>
-          <strong id="levelName">-</strong>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(255, 80, 49, 0.24), transparent 28%),
+          radial-gradient(circle at 80% 18%, rgba(240, 201, 146, 0.09), transparent 22%),
+          linear-gradient(180deg, #100604 0%, #050505 28%, #0b0b0b 100%);
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 26px 26px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 72%);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at 12% 24%, rgba(255, 80, 49, 0.2), transparent 14%),
+          radial-gradient(circle at 88% 62%, rgba(240, 201, 146, 0.08), transparent 18%);
+        filter: blur(10px);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 60px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 18px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 28px;
+        padding: 14px 18px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(8, 8, 8, 0.72);
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.45rem;
+        letter-spacing: 0.08em;
+        color: #fff;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent),
+          linear-gradient(135deg, var(--red), var(--red-deep));
+        box-shadow: 0 18px 36px rgba(215, 40, 16, 0.34);
+      }
+
+      .brand-copy strong,
+      .section-title,
+      .impact-number,
+      .track-name,
+      .closing-banner strong {
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 0.06em;
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 1.45rem;
+        line-height: 0.9;
+      }
+
+      .brand-copy span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .nav a {
+        color: var(--muted);
+        font-weight: 700;
+        transition: color 180ms ease, transform 180ms ease;
+      }
+
+      .nav a:hover {
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+          linear-gradient(135deg, rgba(255, 80, 49, 0.16), rgba(0, 0, 0, 0.12));
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before {
+        content: "STRAY KIDS";
+        position: absolute;
+        top: 12px;
+        left: -10px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(4.2rem, 18vw, 12rem);
+        line-height: 0.82;
+        color: rgba(255, 255, 255, 0.05);
+        transform: rotate(-8deg);
+        z-index: -1;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg, transparent 18%, rgba(255, 255, 255, 0.08) 34%, transparent 50%),
+          radial-gradient(circle at 72% 24%, rgba(255, 80, 49, 0.22), transparent 18%);
+        mix-blend-mode: screen;
+        animation: heroSweep 9s linear infinite;
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+        gap: 22px;
+        padding: 34px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 16px;
+        color: var(--sand);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--sand), transparent);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(3.4rem, 9vw, 7.1rem);
+        line-height: 0.88;
+        letter-spacing: 0.03em;
+      }
+
+      .hero p {
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.95;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin: 28px 0 30px;
+      }
+
+      .button {
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 155px;
+        padding: 14px 22px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-weight: 800;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.24);
+      }
+
+      .button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.3) 50%, transparent 80%);
+        transform: translateX(-140%);
+        transition: transform 500ms ease;
+      }
+
+      .button:hover::after {
+        transform: translateX(140%);
+      }
+
+      .button-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--red), var(--red-deep));
+        animation: pulseGlow 2.8s ease-in-out infinite;
+      }
+
+      .button-secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .button-youtube {
+        border-color: rgba(255, 255, 255, 0.14);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 80, 49, 0.1));
+      }
+
+      .social-strip {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0 0 30px;
+      }
+
+      .social-link {
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .social-link:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 80, 49, 0.42);
+        background: rgba(255, 255, 255, 0.07);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-link strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.98rem;
+      }
+
+      .social-link span {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .stat {
+        padding: 18px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .stat:hover,
+      .mini-card:hover,
+      .impact-card:hover,
+      .timeline-item:hover,
+      .moment-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 80, 49, 0.34);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.2rem;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .hero-showcase {
+        display: grid;
+        gap: 16px;
+      }
+
+      .showcase-card,
+      .section-card,
+      .track-card,
+      .moment-card,
+      .cta-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        backdrop-filter: blur(16px);
+      }
+
+      .showcase-card {
+        position: relative;
+        min-height: 260px;
+        padding: 22px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+          linear-gradient(155deg, rgba(255, 80, 49, 0.3), rgba(0, 0, 0, 0.15));
+      }
+
+      .showcase-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -40px -60px auto;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(240, 201, 146, 0.4), transparent 62%);
+      }
+
+      .showcase-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.24);
+        color: var(--sand);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .showcase-title {
+        max-width: 12ch;
+        margin-bottom: 10px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(2.8rem, 7vw, 4.2rem);
+        line-height: 0.9;
+      }
+
+      .showcase-card p,
+      .mini-card p,
+      .track-card p,
+      .moment-card p,
+      .cta-card p {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .mini-card {
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      main {
+        display: grid;
+        gap: 22px;
+        margin-top: 22px;
+      }
+
+      .section-card {
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .section-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        margin-bottom: 8px;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        line-height: 0.9;
+      }
+
+      .section-subtitle {
+        max-width: 56ch;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .impact-card {
+        padding: 20px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .impact-number {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 2rem;
+      }
+
+      .tracks-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .track-card {
+        padding: 22px;
+        transition: transform 180ms ease, border-color 180ms ease;
+      }
+
+      .track-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 80, 49, 0.45);
+      }
+
+      .track-tag {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: rgba(255, 80, 49, 0.14);
+        color: #ffb7ab;
+        font-size: 0.84rem;
+        font-weight: 800;
+      }
+
+      .track-name {
+        margin-bottom: 10px;
+        font-size: 1.95rem;
+        line-height: 0.95;
+      }
+
+      .moments-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 16px;
+      }
+
+      .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .portal-card {
+        position: relative;
+        overflow: hidden;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 24px;
+        background:
+          linear-gradient(135deg, rgba(255, 80, 49, 0.12), rgba(255, 255, 255, 0.03)),
+          rgba(255, 255, 255, 0.04);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .portal-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 80, 49, 0.34);
+      }
+
+      .portal-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -60px -60px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(240, 201, 146, 0.18), transparent 62%);
+      }
+
+      .portal-card strong {
+        display: block;
+        margin-bottom: 10px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        letter-spacing: 0.05em;
+      }
+
+      .portal-card p {
+        max-width: 36ch;
+        margin-bottom: 18px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .moment-card {
+        padding: 22px;
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .moment-card.featured {
+        min-height: 100%;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+          linear-gradient(135deg, rgba(240, 201, 146, 0.12), rgba(255, 80, 49, 0.12));
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 16px 16px 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        right: -1px;
+        width: 4px;
+        height: calc(100% - 32px);
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--red), transparent);
+      }
+
+      .timeline-item strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .closing-banner {
+        position: relative;
+        overflow: hidden;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(135deg, rgba(255, 80, 49, 0.22), rgba(240, 201, 146, 0.08)),
+          rgba(255, 255, 255, 0.04);
+        box-shadow: var(--shadow);
+      }
+
+      .closing-banner::after {
+        content: "STAY";
+        position: absolute;
+        left: 24px;
+        bottom: -10px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(5rem, 14vw, 10rem);
+        color: rgba(255, 255, 255, 0.05);
+        line-height: 0.8;
+      }
+
+      .closing-banner strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        line-height: 0.92;
+      }
+
+      .closing-banner p {
+        max-width: 55ch;
+        margin-bottom: 22px;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        animation: rise 900ms cubic-bezier(0.18, 0.9, 0.2, 1) forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 120ms;
+      }
+
+      .delay-2 {
+        animation-delay: 240ms;
+      }
+
+      .delay-3 {
+        animation-delay: 360ms;
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 rgba(255, 80, 49, 0);
+        }
+
+        50% {
+          box-shadow: 0 0 0 10px rgba(255, 80, 49, 0.08);
+        }
+      }
+
+      @keyframes heroSweep {
+        0% {
+          transform: translateX(-18%) skewX(-10deg);
+          opacity: 0.25;
+        }
+
+        50% {
+          opacity: 0.55;
+        }
+
+        100% {
+          transform: translateX(18%) skewX(-10deg);
+          opacity: 0.25;
+        }
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero-grid,
+        .moments-grid,
+        .impact-grid,
+        .tracks-grid,
+        .portal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-stats,
+        .social-strip,
+        .mini-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .topbar {
+          border-radius: 28px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-shell {
+          width: min(100% - 18px, 100%);
+          padding-top: 16px;
+        }
+
+        .topbar,
+        .hero-grid,
+        .section-card,
+        .closing-banner {
+          padding: 18px;
+        }
+
+        .topbar {
+          position: static;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav {
+          justify-content: flex-start;
+        }
+
+        .hero-stats,
+        .social-strip,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: clamp(2.8rem, 18vw, 4.2rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar reveal">
+        <a class="brand" href="#top">
+          <span class="brand-mark">SKZ</span>
+          <span class="brand-copy">
+            <strong>STRAY KIDS</strong>
+            <span>صوت جريء. حضور لا يُروَّض.</span>
+          </span>
+        </a>
+
+        <nav class="nav">
+          <a href="#energy">الطاقة</a>
+          <a href="#tracks">الأغاني</a>
+          <a href="members.html">الأعضاء</a>
+          <a href="story.html">الهوية</a>
+          <a href="#moments">اللحظات</a>
+          <a href="#stay">STAY</a>
+        </nav>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div class="reveal delay-1">
+            <p class="eyebrow">فرقة تصنع الضجيج بطريقتها الخاصة</p>
+            <h1>STRAY KIDS ليسوا مجرد فرقة... بل انفجار أسلوب.</h1>
+            <p>
+              من الأداء المتوحش إلى الإيقاعات التي تضرب مباشرة في القلب، تقدم
+              Stray Kids تجربة تشعر معها أن المسرح يشتعل وأن الجمهور يصبح جزءاً
+              من الحكاية. هذه صفحة صممت لتلتقط ذلك الإحساس: سرعة، ثقة، تمرد،
+              وكاريزما لا تخطئها العين.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#tracks">اكتشف عالمهم</a>
+              <a class="button button-secondary" href="#stay">انضم إلى STAY</a>
+            </div>
+
+            <div class="social-strip">
+              <a
+                class="social-link"
+                href="https://www.youtube.com/@StrayKids"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>YouTube</strong>
+                <span>القناة الرسمية</span>
+              </a>
+              <a
+                class="social-link"
+                href="https://www.instagram.com/realstraykids/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Instagram</strong>
+                <span>@realstraykids</span>
+              </a>
+              <a
+                class="social-link"
+                href="https://x.com/Stray_Kids"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>X / Twitter</strong>
+                <span>@Stray_Kids</span>
+              </a>
+              <a
+                class="social-link"
+                href="https://www.facebook.com/JYPEStrayKids/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Facebook</strong>
+                <span>JYPEStrayKids</span>
+              </a>
+              <a
+                class="social-link"
+                href="https://straykids.jype.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Official Site</strong>
+                <span>الموقع الرسمي</span>
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>8 أعضاء</strong>
+                <span>كيمياء جماعية تصنع هوية لا تشبه أحداً.</span>
+              </div>
+              <div class="stat">
+                <strong>طاقة مسرحية</strong>
+                <span>أداء حاد، واثق، ومليء بالتفاصيل.</span>
+              </div>
+              <div class="stat">
+                <strong>STAY</strong>
+                <span>فاندوم حي، صاخب، ومخلص حول العالم.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-showcase reveal delay-2">
+            <article class="showcase-card">
+              <span class="showcase-label">Visual Identity</span>
+              <h2 class="showcase-title">LOUD. FAST. UNSTOPPABLE.</h2>
+              <p>
+                مزيج من الجرأة البصرية، الحدة الموسيقية، واللمسة العاطفية التي
+                تجعل كل عودة تبدو كأنها حدث ضخم.
+              </p>
+            </article>
+
+            <div class="mini-grid">
+              <article class="mini-card">
+                <strong>الإنتاج</strong>
+                <p>هوية صوتية واضحة تمزج القوة، المزاج السينمائي، والاندفاع.</p>
+              </article>
+              <article class="mini-card">
+                <strong>الأداء</strong>
+                <p>رقصات تضرب بقوة مع حضور جماعي يخطف الانتباه فوراً.</p>
+              </article>
+            </div>
+          </div>
         </div>
-        <div class="stat">
-          <span>المقتنيات</span>
-          <strong id="collectStatus">0 / 0</strong>
-        </div>
-        <div class="stat">
-          <span>النقاط</span>
-          <strong id="scoreValue">0</strong>
-        </div>
-      </div>
+      </section>
 
-      <div class="actions">
-        <button id="startButton" class="primary-btn">ابدأ المغامرة</button>
-        <button id="restartButton" class="ghost-btn">أعد المرحلة</button>
-        <button id="skipButton" class="ghost-btn">تخطي المرحلة</button>
-        <button id="audioButton" class="ghost-btn">الصوت: شغال</button>
-      </div>
+      <main>
+        <section class="section-card reveal" id="energy">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">لماذا يختلفون؟</h2>
+              <p class="section-subtitle">
+                لأنهم لا يكتفون بتقديم أغنية جميلة. هم يبنون مزاجاً كاملاً:
+                عالم بصري، أداء مشحون، ورسالة تقول إن الاختلاف نفسه قوة.
+              </p>
+            </div>
+          </div>
 
-      <div class="controls-note">
-        <span>التحكم:</span>
-        الأسهم أو <b>W A S D</b> للحركة، و <b>Space</b> أو <b>W</b> للقفز، و <b>S</b> أو السهم السفلي للانحناء.
-      </div>
-    </section>
+          <div class="impact-grid">
+            <article class="impact-card">
+              <span class="impact-number">01</span>
+              <p>هوية سمعية مميزة تجعل أي مقطع يبدو وكأنه يحمل توقيعهم الخاص.</p>
+            </article>
+            <article class="impact-card">
+              <span class="impact-number">02</span>
+              <p>قدرة على الانتقال بين القوة، الظلام، العاطفة، والاحتفال بدون فقدان الشخصية.</p>
+            </article>
+            <article class="impact-card">
+              <span class="impact-number">03</span>
+              <p>تفاصيل أداء تجعل كل مشاهدة جديدة تكشف حركة أو تعبيراً إضافياً.</p>
+            </article>
+            <article class="impact-card">
+              <span class="impact-number">04</span>
+              <p>صلة واضحة مع الجمهور تجعل كل إطلاق جديد يبدو كمهرجان كامل.</p>
+            </article>
+          </div>
+        </section>
 
-    <section class="canvas-card">
-      <div class="canvas-topbar">
-        <div id="bannerTitle">جاهز للانطلاق</div>
-        <div id="bannerSubtitle">خمس مراحل داخل قلعة ملكية مليئة بالمصائد والأسرار.</div>
-      </div>
-      <canvas id="gameCanvas" width="960" height="540" aria-label="لعبة رحلة نجم في المغرب"></canvas>
+        <section class="section-card reveal delay-1" id="tracks">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">محطات لا تُنسى</h2>
+              <p class="section-subtitle">
+                بعض الأعمال التي ساعدت على ترسيخ صورة Stray Kids كفرقة تحب
+                المغامرة، المخاطرة، والضرب بقوة.
+              </p>
+            </div>
+          </div>
 
-      <div id="overlay" class="overlay">
-        <div class="overlay-box">
-          <h2 id="overlayTitle">رحلة نُجْم في المغرب</h2>
-          <p id="overlayBody">اجمع كل المقتنيات في كل مرحلة ثم ادخل الباب الذهبي للانتقال للمرحلة التالية.</p>
-        </div>
-      </div>
+          <div class="tracks-grid">
+            <article class="track-card">
+              <span class="track-tag">Iconic Energy</span>
+              <h3 class="track-name">God's Menu</h3>
+              <p>نشيد صاخب ومباشر رسخ الصورة الجريئة للفرقة وأعطاها حضوراً لا ينسى.</p>
+            </article>
+            <article class="track-card">
+              <span class="track-tag">Performance Rush</span>
+              <h3 class="track-name">MANIAC</h3>
+              <p>مزاج غريب وواثق مع أداء بصري حاد جعل الأغنية لحظة جماهيرية كبيرة.</p>
+            </article>
+            <article class="track-card">
+              <span class="track-tag">Festival Impact</span>
+              <h3 class="track-name">S-Class</h3>
+              <p>إيقاع متغير وجو استعراضي يثبت أن الفوضى قد تتحول إلى فن ممتع جداً.</p>
+            </article>
+          </div>
+        </section>
 
-      <div class="touch-controls">
-        <button class="touch-btn" data-key="left">يسار</button>
-        <button class="touch-btn" data-key="down">نزول</button>
-        <button class="touch-btn" data-key="jump">قفز</button>
-        <button class="touch-btn" data-key="right">يمين</button>
-      </div>
-    </section>
-  </main>
+        <section class="section-card reveal delay-2" id="moments">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">لحظات تصنع الأسطورة</h2>
+              <p class="section-subtitle">
+                جاذبية Stray Kids لا تأتي من عنصر واحد، بل من تراكم التفاصيل:
+                افتتاحية صادمة، لازمة تعلق في الرأس، وكاريزما تتحكم بالمسرح.
+              </p>
+            </div>
+          </div>
 
-  <script src="game.js"></script>
-</body>
+          <div class="moments-grid">
+            <article class="moment-card featured">
+              <h3>حين تبدأ الأغنية، يتغير كل شيء</h3>
+              <p>
+                هناك فرق تؤدي، وهناك فرق تخلق حدثاً. Stray Kids من النوع الثاني.
+                صوتهم يحمل اندفاعاً واضحاً، لكن ما يعلق فعلاً هو الإحساس بأنهم
+                يعرفون تماماً من هم، ويقدمون ذلك بثقة كاملة.
+              </p>
+              <p>
+                هذا ما يجعلهم محبوبين: ليس فقط لأنهم أقوياء، بل لأنهم صادقون في
+                هذه القوة، ويحولونها إلى مساحة يشعر فيها المعجب بأنه جزء من
+                القصة.
+              </p>
+            </article>
+
+            <div class="timeline">
+              <article class="timeline-item">
+                <strong>الصوت</strong>
+                <span>إيقاعات هجومية، طبقات واضحة، وخاتمة تترك أثراً فورياً.</span>
+              </article>
+              <article class="timeline-item">
+                <strong>الصورة</strong>
+                <span>ستايل جريء، زوايا حادة، وهوية بصرية لا تميل للآمن أو المعتاد.</span>
+              </article>
+              <article class="timeline-item">
+                <strong>العلاقة مع STAY</strong>
+                <span>حضور إنساني وحميمي يجعل الحماس أكبر من مجرد إعجاب عابر.</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal delay-3" id="pages">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">صفحات إضافية داخل الموقع</h2>
+              <p class="section-subtitle">
+                وسعت الموقع ليصبح أكثر من صفحة هبوط واحدة. يمكنك الانتقال إلى
+                صفحة الأعضاء للتعرّف على كل عضو بصورة وتعريف سريع، أو صفحة
+                الهوية لاكتشاف الأجواء والرسالة التي تجعل Stray Kids مختلفين.
+              </p>
+            </div>
+          </div>
+
+          <div class="portal-grid">
+            <article class="portal-card">
+              <strong>Members Page</strong>
+              <p>
+                صور رسمية للأعضاء الثمانية مع نبذة قصيرة، تاريخ الميلاد، ودور
+                كل واحد داخل التجربة التي تقدمها الفرقة.
+              </p>
+              <a class="button button-primary" href="members.html">ادخل إلى صفحة الأعضاء</a>
+            </article>
+
+            <article class="portal-card">
+              <strong>Story Page</strong>
+              <p>
+                صفحة إضافية عن هوية Stray Kids، قوة الأداء، المزاج البصري،
+                والعلاقة التي تربطهم بفاندوم STAY.
+              </p>
+              <a class="button button-secondary" href="story.html">استكشف صفحة الهوية</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="closing-banner reveal delay-3" id="stay">
+          <strong>إذا كنت تحب الموسيقى التي تمشي بقوة إلى الأمام، فمكانك هنا.</strong>
+          <p>
+            Stray Kids يقدمون تجربة لا تبحث عن الهدوء أو الحلول السهلة. إنهم
+            يختارون الجرأة، ويكافئون جمهورهم بكل لحظة مليئة بالطاقة، الثقة،
+            والاندفاع. لهذا يبقى اسمهم عالقاً في الذاكرة... ولهذا تبقى STAY.
+          </p>
+          <a class="button button-primary" href="#top">ارجع للبداية</a>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
