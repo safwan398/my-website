@@ -606,6 +606,131 @@
         line-height: 1.8;
       }
 
+      .identity-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 16px;
+      }
+
+      .identity-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .identity-panel {
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .identity-panel:hover,
+      .member-card-home:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 80, 49, 0.34);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .identity-panel h3,
+      .member-name-home {
+        margin-bottom: 10px;
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      .identity-panel h3 {
+        margin-top: 0;
+        font-size: 2rem;
+        line-height: 0.92;
+      }
+
+      .identity-panel p,
+      .member-role-home,
+      .member-copy-home,
+      .member-meta-home {
+        color: var(--muted);
+      }
+
+      .identity-panel p {
+        margin-bottom: 0;
+        line-height: 1.9;
+      }
+
+      .identity-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .identity-metric {
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .identity-metric strong {
+        display: block;
+        margin-bottom: 8px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.9rem;
+        letter-spacing: 0.05em;
+      }
+
+      .members-grid-home {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .member-card-home {
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .member-photo-home {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .member-body-home {
+        padding: 18px;
+      }
+
+      .member-name-home {
+        margin-top: 0;
+        font-size: 2rem;
+        line-height: 0.92;
+      }
+
+      .member-role-home {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .member-copy-home {
+        margin: 0 0 14px;
+        line-height: 1.75;
+        font-size: 0.95rem;
+      }
+
+      .member-meta-home {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.82rem;
+      }
+
       .moment-card {
         padding: 22px;
         transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
@@ -752,12 +877,15 @@
         .moments-grid,
         .impact-grid,
         .tracks-grid,
-        .portal-grid {
+        .portal-grid,
+        .identity-grid,
+        .members-grid-home {
           grid-template-columns: 1fr;
         }
 
         .hero-stats,
         .social-strip,
+        .identity-metrics,
         .mini-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -792,6 +920,7 @@
 
         .hero-stats,
         .social-strip,
+        .identity-metrics,
         .mini-grid {
           grid-template-columns: 1fr;
         }
@@ -816,8 +945,8 @@
         <nav class="nav">
           <a href="#energy">الطاقة</a>
           <a href="#tracks">الأغاني</a>
-          <a href="members.html">الأعضاء</a>
-          <a href="story.html">الهوية</a>
+          <a href="#members">الأعضاء</a>
+          <a href="#identity">الهوية</a>
           <a href="#moments">اللحظات</a>
           <a href="#stay">STAY</a>
         </nav>
@@ -1033,35 +1162,178 @@
           </div>
         </section>
 
-        <section class="section-card reveal delay-3" id="pages">
+        <section class="section-card reveal delay-3" id="identity">
           <div class="section-header">
             <div>
-              <h2 class="section-title">صفحات إضافية داخل الموقع</h2>
+              <h2 class="section-title">هوية Stray Kids</h2>
               <p class="section-subtitle">
-                وسعت الموقع ليصبح أكثر من صفحة هبوط واحدة. يمكنك الانتقال إلى
-                صفحة الأعضاء للتعرّف على كل عضو بصورة وتعريف سريع، أو صفحة
-                الهوية لاكتشاف الأجواء والرسالة التي تجعل Stray Kids مختلفين.
+                قوة الفرقة لا تأتي فقط من الأغاني أو الرقصات، بل من طريقة
+                بنائهم لعالم كامل: صوت جريء، صورة بصرية واضحة، وعلاقة قريبة مع
+                جمهور STAY تجعل كل عودة تبدو كأنها حدث كبير.
               </p>
             </div>
           </div>
 
-          <div class="portal-grid">
-            <article class="portal-card">
-              <strong>Members Page</strong>
+          <div class="identity-grid">
+            <article class="identity-panel">
+              <h3>الهوية الصوتية</h3>
               <p>
-                صور رسمية للأعضاء الثمانية مع نبذة قصيرة، تاريخ الميلاد، ودور
-                كل واحد داخل التجربة التي تقدمها الفرقة.
+                Stray Kids يفضلون الحدة والاندفاع على الحلول الآمنة. موسيقاهم
+                تميل إلى الحركة المستمرة والتحولات السريعة، لذلك تشعر أن كل
+                أغنية تفرض حضورها منذ اللحظة الأولى.
               </p>
-              <a class="button button-primary" href="members.html">ادخل إلى صفحة الأعضاء</a>
+
+              <div class="identity-metrics">
+                <div class="identity-metric">
+                  <strong>LOUD</strong>
+                  <span>صوت مباشر لا يخاف من القوة.</span>
+                </div>
+                <div class="identity-metric">
+                  <strong>SHARP</strong>
+                  <span>صورة بصرية حادة وسهلة التذكر.</span>
+                </div>
+                <div class="identity-metric">
+                  <strong>STAY</strong>
+                  <span>جمهور يضاعف أثر كل إطلاق جديد.</span>
+                </div>
+              </div>
             </article>
 
-            <article class="portal-card">
-              <strong>Story Page</strong>
-              <p>
-                صفحة إضافية عن هوية Stray Kids، قوة الأداء، المزاج البصري،
-                والعلاقة التي تربطهم بفاندوم STAY.
+            <div class="identity-stack">
+              <article class="identity-panel">
+                <h3>الأداء</h3>
+                <p>
+                  حضورهم على المسرح محسوب، لكنه لا يبدو بارداً. كل عضو يترك
+                  بصمته الخاصة، ومع ذلك تبقى الصورة الجماعية متماسكة وقوية.
+                </p>
+              </article>
+
+              <article class="identity-panel">
+                <h3>العلاقة مع STAY</h3>
+                <p>
+                  جزء كبير من سحر الفرقة يأتي من هذا الشعور بأنهم قريبون من
+                  جمهورهم. هذا القرب يجعل كل إصدار أكثر من مجرد أغنية جديدة.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal delay-3" id="members">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">أعضاء الفرقة</h2>
+              <p class="section-subtitle">
+                صور الأعضاء الرسمية وتواريخ الميلاد مأخوذة من صفحة الملف الرسمي
+                للفرقة، بينما التعريفات هنا مكتوبة بصيغة ترويجية عربية لتناسب
+                هوية الموقع.
               </p>
-              <a class="button button-secondary" href="story.html">استكشف صفحة الهوية</a>
+            </div>
+          </div>
+
+          <div class="members-grid-home">
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896353766-5e269a52.jpg" alt="Bang Chan" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Bang Chan</h3>
+                <p class="member-role-home">القائد | توازن وثقة</p>
+                <p class="member-copy-home">وجه يمنح المجموعة إحساساً بالثبات ويجمع بين القوة والهدوء في وقت واحد.</p>
+                <div class="member-meta-home">
+                  <span>방찬</span>
+                  <span>1997.10.03</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896362989-d984ec10.jpg" alt="Lee Know" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Lee Know</h3>
+                <p class="member-role-home">أناقة حادة | حضور يلمع بهدوء</p>
+                <p class="member-copy-home">يجذب الانتباه بالتفاصيل، ويترك أثراً واضحاً حتى في اللحظات الهادئة.</p>
+                <div class="member-meta-home">
+                  <span>리노</span>
+                  <span>1998.10.25</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896368284-bf2113c0.jpg" alt="Changbin" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Changbin</h3>
+                <p class="member-role-home">اندفاع صريح | قوة مباشرة</p>
+                <p class="member-copy-home">يضيف كثافة فورية للمشهد ويمنح الأداء طابعاً هجوميّاً واضحاً.</p>
+                <div class="member-meta-home">
+                  <span>창빈</span>
+                  <span>1999.08.11</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896374925-e806a21c.jpg" alt="Hyunjin" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Hyunjin</h3>
+                <p class="member-role-home">كاريزما بصرية | حركة تشبه الفن</p>
+                <p class="member-copy-home">يحمل حضوراً درامياً واضحاً ويحوّل أي لقطة إلى لحظة يصعب نسيانها.</p>
+                <div class="member-meta-home">
+                  <span>현진</span>
+                  <span>2000.03.20</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896380322-429b5d7f.jpg" alt="HAN" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">HAN</h3>
+                <p class="member-role-home">مرونة وسرعة | طاقة متقلبة بشكل ممتع</p>
+                <p class="member-copy-home">يمكنه أن يبدو حاداً أو عاطفياً في لحظات متقاربة، وهذه المرونة جزء من سحره.</p>
+                <div class="member-meta-home">
+                  <span>한</span>
+                  <span>2000.09.14</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896387715-56a23446.jpg" alt="Felix" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Felix</h3>
+                <p class="member-role-home">بصمة فورية | حضور لا ينسى</p>
+                <p class="member-copy-home">وجوده يجعل أي مقطع أكثر تعلقاً في الذاكرة، مع هالة واضحة من أول نظرة.</p>
+                <div class="member-meta-home">
+                  <span>필릭스</span>
+                  <span>2000.09.15</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896393484-f1b30f70.jpg" alt="Seungmin" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">Seungmin</h3>
+                <p class="member-role-home">ثبات وأناقة | توازن جميل</p>
+                <p class="member-copy-home">يمنح الصورة العامة صفاءً ورسوخاً، ويخلق نقطة توازن وسط الطاقة العالية.</p>
+                <div class="member-meta-home">
+                  <span>승민</span>
+                  <span>2000.09.22</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="member-card-home">
+              <img class="member-photo-home" src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896399434-4a9e01bc.jpg" alt="I.N" />
+              <div class="member-body-home">
+                <h3 class="member-name-home">I.N</h3>
+                <p class="member-role-home">إشراق واضح | لمسة شابة</p>
+                <p class="member-copy-home">يضيف بعداً منعشاً للصورة الجماعية ويوازن بين البراءة والثقة المتزايدة.</p>
+                <div class="member-meta-home">
+                  <span>아이엔</span>
+                  <span>2001.02.08</span>
+                </div>
+              </div>
             </article>
           </div>
         </section>
