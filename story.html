@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stray Kids Story | الهوية</title>
+    <meta
+      name="description"
+      content="صفحة إضافية داخل موقع Stray Kids تشرح هوية الفرقة، قوتها الأدائية، وعلاقتها بجمهور STAY بأسلوب بصري جريء."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --panel: rgba(255, 255, 255, 0.05);
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #f8f0e6;
+        --muted: #cdbfb1;
+        --red: #ff5031;
+        --red-deep: #d72810;
+        --sand: #f0c992;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(255, 80, 49, 0.2), transparent 24%),
+          linear-gradient(180deg, #0f0706 0%, #050505 34%, #0c0c0c 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page-shell {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 56px;
+      }
+
+      .topbar,
+      .hero,
+      .panel,
+      .closing {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--red), var(--red-deep));
+      }
+
+      .brand strong,
+      h1,
+      h2,
+      .metric strong,
+      .closing strong {
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 1.35rem;
+      }
+
+      .brand span,
+      .nav a,
+      .hero p,
+      .panel p,
+      .metric span,
+      .closing p {
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .nav a {
+        font-weight: 700;
+      }
+
+      .hero {
+        margin-top: 22px;
+        padding: 30px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "IDENTITY";
+        position: absolute;
+        left: 18px;
+        bottom: -6px;
+        color: rgba(255, 255, 255, 0.05);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(5rem, 15vw, 10rem);
+        line-height: 0.8;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--sand);
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(3.1rem, 7vw, 5.8rem);
+        line-height: 0.9;
+      }
+
+      .hero p {
+        max-width: 60ch;
+        font-size: 1.03rem;
+        line-height: 1.95;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .panel {
+        padding: 24px;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.92;
+      }
+
+      .panel p {
+        margin: 0;
+        line-height: 1.9;
+      }
+
+      .stack {
+        display: grid;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .metric {
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.85rem;
+      }
+
+      .closing {
+        margin-top: 22px;
+        padding: 26px;
+        background:
+          linear-gradient(135deg, rgba(255, 80, 49, 0.16), rgba(240, 201, 146, 0.06)),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .closing strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: clamp(2.1rem, 5vw, 3.4rem);
+        line-height: 0.92;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 150px;
+        padding: 13px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        border: 1px solid transparent;
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, var(--red), var(--red-deep));
+        color: #fff;
+      }
+
+      .button-secondary {
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      @media (max-width: 900px) {
+        .grid,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-shell {
+          width: min(100% - 18px, 100%);
+          padding-top: 16px;
+        }
+
+        .topbar,
+        .hero,
+        .panel,
+        .closing {
+          padding: 18px;
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">SKZ</span>
+          <span>
+            <strong>STRAY KIDS</strong>
+            <span>صفحة الهوية</span>
+          </span>
+        </a>
+
+        <nav class="nav">
+          <a href="index.html">الرئيسية</a>
+          <a href="members.html">الأعضاء</a>
+          <a href="https://straykids.jype.com/" target="_blank" rel="noopener noreferrer">Official Site</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">ما الذي يجعلهم مختلفين؟</p>
+        <h1>Stray Kids يبنون مزاجاً كاملاً، لا مجرد أغنية منفصلة.</h1>
+        <p>
+          قوة الفرقة لا تأتي فقط من الإيقاع أو الأداء، بل من القدرة على خلق عالم
+          متماسك: صورة بصرية واضحة، طاقة هجومية، ولمسة عاطفية تجعل كل إصدار يبدو
+          وكأنه فصل جديد في قصة مستمرة.
+        </p>
+      </section>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>الهوية الصوتية</h2>
+          <p>
+            Stray Kids يفضلون الحدة والجرأة على الحلول السهلة. موسيقاهم تميل إلى
+            الحركة المستمرة، التحولات المفاجئة، وبناء لحظات تترك انطباعاً سريعاً.
+            لهذا يشعر المستمع أن الأغنية لا تمر مروراً عادياً، بل تفرض حضورها
+            من البداية حتى النهاية.
+          </p>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>LOUD</strong>
+              <span>صوت لا يخاف من الاندفاع والقوة.</span>
+            </div>
+            <div class="metric">
+              <strong>SHARP</strong>
+              <span>صورة بصرية تعرف كيف تخطف الانتباه.</span>
+            </div>
+            <div class="metric">
+              <strong>STAY</strong>
+              <span>جمهور يضاعف الأثر ويجعله حدثاً عالمياً.</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="stack">
+          <section class="panel">
+            <h2>الأداء</h2>
+            <p>
+              حضورهم على المسرح يبدو محسوباً لكنه لا يفقد طبيعته الحية. هناك
+              إحساس دائم بأن كل عضو يعرف مكانه تماماً، ومع ذلك يترك مساحة لشخصيته
+              الخاصة كي تظهر بوضوح.
+            </p>
+          </section>
+
+          <section class="panel">
+            <h2>العلاقة مع STAY</h2>
+            <p>
+              جزء كبير من قوة Stray Kids يأتي من شعور المعجب بأن الفرقة تتحدث معه
+              مباشرة. هذا القرب يصنع قاعدة عاطفية تجعل كل عودة أكثر من مجرد
+              إصدار جديد، بل لحظة ينتظرها الجميع.
+            </p>
+          </section>
+
+          <section class="panel">
+            <h2>النتيجة</h2>
+            <p>
+              عندما تجتمع الهوية الصوتية مع الصورة المسرحية ومع هذا النوع من
+              القرب الجماهيري، تكون النتيجة فرقة تعرف بالضبط كيف تحافظ على
+              شخصيتها وتظل متجددة في الوقت نفسه.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <section class="closing">
+        <strong>الموقع أصبح الآن تجربة من عدة صفحات بدل صفحة واحدة فقط.</strong>
+        <p>
+          يمكنك العودة إلى الصفحة الرئيسية لاستعراض الواجهة الأساسية، أو الانتقال
+          إلى صفحة الأعضاء لمشاهدة صور الأعضاء الرسمية والتعريفات العربية الخاصة
+          بكل واحد منهم.
+        </p>
+        <div class="buttons">
+          <a class="button button-primary" href="members.html">اذهب إلى الأعضاء</a>
+          <a class="button button-secondary" href="index.html">العودة إلى الرئيسية</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

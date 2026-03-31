@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stray Kids Members | الأعضاء</title>
+    <meta
+      name="description"
+      content="تعرف على أعضاء Stray Kids الثمانية من خلال صفحة عربية جذابة تتضمن صورهم الرسمية ونبذات سريعة عن شخصياتهم وحضورهم."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --panel: rgba(255, 255, 255, 0.05);
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #f7efe4;
+        --muted: #cabfb2;
+        --red: #ff5031;
+        --red-deep: #d72810;
+        --sand: #f0c992;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(255, 80, 49, 0.22), transparent 24%),
+          linear-gradient(180deg, #110806 0%, #060606 34%, #0b0b0b 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 75%);
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .page-shell {
+        width: min(1220px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 56px;
+      }
+
+      .topbar,
+      .hero,
+      .member-card,
+      .closing {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 14px 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--red), var(--red-deep));
+        color: #fff;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.08em;
+      }
+
+      .brand strong,
+      .hero h1,
+      .section-title,
+      .member-name,
+      .closing strong {
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 1.35rem;
+      }
+
+      .brand span,
+      .nav a,
+      .hero p,
+      .member-role,
+      .member-copy,
+      .member-meta,
+      .closing p {
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .nav a {
+        font-weight: 700;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        margin-top: 22px;
+        padding: 30px;
+      }
+
+      .hero::after {
+        content: "8 MEMBERS";
+        position: absolute;
+        left: 18px;
+        top: 12px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(4rem, 16vw, 10rem);
+        line-height: 0.85;
+        color: rgba(255, 255, 255, 0.05);
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--sand);
+        font-weight: 800;
+      }
+
+      .hero h1 {
+        margin: 0 0 16px;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.9;
+      }
+
+      .hero p {
+        max-width: 60ch;
+        line-height: 1.9;
+        font-size: 1.03rem;
+      }
+
+      .section-head {
+        margin: 28px 0 18px;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: clamp(2.3rem, 5vw, 3.5rem);
+        line-height: 0.92;
+      }
+
+      .section-head p {
+        max-width: 58ch;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .member-card {
+        overflow: hidden;
+        transition: transform 200ms ease, border-color 200ms ease;
+      }
+
+      .member-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 80, 49, 0.4);
+      }
+
+      .member-photo {
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .member-body {
+        padding: 18px;
+      }
+
+      .member-name {
+        margin: 0 0 6px;
+        font-size: 2rem;
+        line-height: 0.9;
+      }
+
+      .member-role {
+        margin: 0 0 12px;
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .member-copy {
+        margin: 0 0 14px;
+        line-height: 1.8;
+        font-size: 0.95rem;
+      }
+
+      .member-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 0.84rem;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .closing {
+        margin-top: 24px;
+        padding: 26px;
+        background:
+          linear-gradient(135deg, rgba(255, 80, 49, 0.16), rgba(240, 201, 146, 0.06)),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .closing strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: clamp(2.1rem, 5vw, 3.4rem);
+        line-height: 0.92;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 150px;
+        padding: 13px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        border: 1px solid transparent;
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, var(--red), var(--red-deep));
+        color: #fff;
+      }
+
+      .button-secondary {
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      @media (max-width: 1100px) {
+        .members-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-shell {
+          width: min(100% - 18px, 100%);
+          padding-top: 16px;
+        }
+
+        .topbar,
+        .hero,
+        .closing {
+          padding: 18px;
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .members-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">SKZ</span>
+          <span>
+            <strong>STRAY KIDS</strong>
+            <span>صفحة الأعضاء</span>
+          </span>
+        </a>
+
+        <nav class="nav">
+          <a href="index.html">الرئيسية</a>
+          <a href="story.html">الهوية</a>
+          <a href="https://www.youtube.com/@StrayKids" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">ثمانية أسماء... وثقل جماعي واحد</p>
+        <h1>كل عضو يضيف لوناً خاصاً لصوت Stray Kids.</h1>
+        <p>
+          هذه الصفحة تجمع صور الأعضاء الرسمية مع نبذة سريعة عن شخصياتهم وحضورهم.
+          تواريخ الميلاد مأخوذة من صفحة الملف الرسمي للفرقة، بينما الوصف هنا
+          مكتوب بصيغة ترويجية ليعكس الإحساس الذي يقدمه كل عضو داخل التجربة العامة.
+        </p>
+      </section>
+
+      <div class="section-head">
+        <h2 class="section-title">الأعضاء</h2>
+        <p>
+          من القائد الذي يمسك الإيقاع العام إلى الأصوات والوجوه التي تمنح المسرح
+          حدته الخاصة، كل عضو هنا جزء أساسي من الشخصية التي جعلت Stray Kids
+          بهذه القوة.
+        </p>
+      </div>
+
+      <section class="members-grid">
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896353766-5e269a52.jpg"
+            alt="Bang Chan"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Bang Chan</h3>
+            <p class="member-role">القائد | طاقة ثابتة ونبرة تقود المشهد</p>
+            <p class="member-copy">
+              حضوره يوحي بالثقة والهدوء في الوقت نفسه. Bang Chan يعطي الفرقة
+              إحساساً بالتوازن، ويظهر كوجه قادر على جمع القوة والإحساس في إطار واحد.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 방찬</span>
+              <span>الميلاد: 1997.10.03</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896362989-d984ec10.jpg"
+            alt="Lee Know"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Lee Know</h3>
+            <p class="member-role">دقة باردة | حضور يلمع في التفاصيل</p>
+            <p class="member-copy">
+              يملك Lee Know طابعاً بصرياً أنيقاً وحاداً. سحره يأتي من القدرة على
+              جذب الانتباه بهدوء، ثم ترك أثر قوي في لحظة واحدة.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 리노</span>
+              <span>الميلاد: 1998.10.25</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896368284-bf2113c0.jpg"
+            alt="Changbin"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Changbin</h3>
+            <p class="member-role">اندفاع صريح | قوة تضرب مباشرة</p>
+            <p class="member-copy">
+              يضيف Changbin طبقة هجومية وملموسة إلى هوية الفرقة. وجوده يجعل
+              الأداء أكثر كثافة، ويمنح أي لحظة شعوراً فوريّاً بالقوة.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 창빈</span>
+              <span>الميلاد: 1999.08.11</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896374925-e806a21c.jpg"
+            alt="Hyunjin"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Hyunjin</h3>
+            <p class="member-role">كاريزما بصرية | حركة تشبه الفن</p>
+            <p class="member-copy">
+              حضور Hyunjin شديد الوضوح على المسرح، كأنه يعرف تماماً كيف يحول كل
+              لقطة إلى مشهد. أسلوبه يجعل الأداء يبدو أكثر درامية وأناقة.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 현진</span>
+              <span>الميلاد: 2000.03.20</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896380322-429b5d7f.jpg"
+            alt="HAN"
+          />
+          <div class="member-body">
+            <h3 class="member-name">HAN</h3>
+            <p class="member-role">مرونة عالية | سرعة وإحساس في آن واحد</p>
+            <p class="member-copy">
+              HAN يضيف للفرقة وجهاً سريعاً ومتقلباً بشكل ممتع. يمكنه أن يبدو
+              مشاكساً، حاداً، أو عاطفياً، وهذا التبدل نفسه جزء من سحره.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 한</span>
+              <span>الميلاد: 2000.09.14</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896387715-56a23446.jpg"
+            alt="Felix"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Felix</h3>
+            <p class="member-role">بصمة فورية | حضور لا يحتاج إلى تقديم طويل</p>
+            <p class="member-copy">
+              Felix يلفت النظر من أول ثانية، سواء من خلال شكله البصري المختلف أو
+              الهالة التي يحملها في الأداء. حضوره يجعل أي مقطع أكثر تعلقاً في الذاكرة.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 필릭스</span>
+              <span>الميلاد: 2000.09.15</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896393484-f1b30f70.jpg"
+            alt="Seungmin"
+          />
+          <div class="member-body">
+            <h3 class="member-name">Seungmin</h3>
+            <p class="member-role">ثبات وأناقة | توازن يريح الأذن والعين</p>
+            <p class="member-copy">
+              Seungmin يمنح الصورة العامة بعداً أكثر صفاءً ورسوخاً. حضوره يبدو
+              مرتباً وواثقاً، ويخلق نقطة توازن جميلة وسط الطاقة العالية.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 승민</span>
+              <span>الميلاد: 2000.09.22</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <img
+            class="member-photo"
+            src="https://d1al7qj7ydfbpt.cloudfront.net/artists/straykids/profiles/1763896399434-4a9e01bc.jpg"
+            alt="I.N"
+          />
+          <div class="member-body">
+            <h3 class="member-name">I.N</h3>
+            <p class="member-role">لمسة نهائية مشرقة | حضور شاب وواضح</p>
+            <p class="member-copy">
+              I.N يضيف لمسة منعشة إلى الفريق، ويمنح الصورة الجماعية بعداً أكثر
+              إشراقاً. حضوره يوازن بين البراءة والثقة المتزايدة على المسرح.
+            </p>
+            <div class="member-meta">
+              <span>الاسم: 아이엔</span>
+              <span>الميلاد: 2001.02.08</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="closing">
+        <strong>الاختلاف الحقيقي يظهر عندما تجتمع هذه الشخصيات في فرقة واحدة.</strong>
+        <p>
+          صور الأعضاء وتواريخ ميلادهم معروضة هنا استناداً إلى صفحة الملف الرسمي
+          لـ Stray Kids على موقع JYP، بينما النصوص التعريفية صيغت بشكل ترويجي
+          عربي لتناسب هوية الموقع الذي بنيناه.
+        </p>
+        <div class="buttons">
+          <a class="button button-primary" href="index.html">العودة إلى الرئيسية</a>
+          <a class="button button-secondary" href="story.html">الانتقال إلى صفحة الهوية</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
